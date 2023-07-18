@@ -2,7 +2,7 @@
 
 ### Documento de Diseño del juego 
 
-##### Middlederg Software		
+Middlederg Software		
 
 ## Introducción
 
@@ -14,7 +14,7 @@ Art Gallery Manager es un juego que te permite gestionar una galería de arte y 
 
 |      Categoría     |                        Información                         |
 |-------------------|-----------------------------------------------------------|
-| Estudio           | Modern Art es un juego de Middlederg software.             |
+| Estudio           | Art Gallery Manager es un juego de Middlederg software.             |
 | Género            | Estrategia                                                |
 | Plataforma        | Web (Blazor)                                              |
 | Licencia          | Basado en el juego de mesa Modern Art de Reiner Knizia.    |
@@ -174,7 +174,7 @@ También puedes pujar por las obras que hayan llevado otros coleccionistas. Siem
 
 Las pujas duran 7 días, es decir, tienes 7 turnos para pujar o pasar. Los tipos de pujas son los siguientes:
 
-- **Abierta**: Cada postor en cada turno hace, si quiere, una puja por el cuadro. Se entrega como fianza el 20  por ciento de la apuesta realizada.
+- **Abierta**: Cada postor en cada turno hace, si quiere, una puja por el cuadro. Se entrega como fianza el 20% de la apuesta realizada.
 
 - **A ciegas**: Cada postor hace su apuesta en secreto, entregando la cantidad ofertada. La apuesta más alta, después de los siete días, se llevará el cuadro, y los demás postores recuperarán su dinero. Aunque no se sepa la cantidad puesta por cada entidad que puja, el número de postores si que es público.
 
@@ -196,7 +196,7 @@ Los impuestos se pueden evitar desarrollando la habilidad ingeniería fiscal, pe
 
 El objetivo del juego es conseguir la máxima puntuación posible antes de que finalicen los años que dura el juego (15 / Dificultad). La puntuación depende tanto del patrimonio económico como del prestigio.
 
-La fecha de finalización se podrá ver si el jugador va al oráculo. El oráculo echa las cartas y estima la fecha de la muerte del jugador, que es cuando termina la partida.
+Al comenzar el último año del juego, el jugador cae enfermo, y tiene ese último año para poner en orden sus asuntos. Al finalizar el año, la partida termina.
 
 ## Jugador
 
@@ -208,12 +208,15 @@ Cuando comienza una nueva partida, el jugador selecciona:
 - Dificultad (1. Aprendiz – 2. Aspirante – 3. Maestro)
 
 Además, el jugador comienza con:
+- Un avatar
+- Una edad (20 + (Dificultad - 1) * 10) +- 3
 - Una galería situada en la ciudad inicial escogida, con capacidad para exponer 4 obras.
 - Algunos miles de dólares en su cuenta, dependiendo de la dificultad. (15000 / Dificultad)
 - Un cuadro inicial, del autor consagrado perteneciente al estilo por el que se ha seleccionado predilección, y regalo personal del autor a la familia del jugador. En modo aprendiz puedes elegir el cuadro, en modo aspirante es al azar, y en modo maestro es uno de características más bajas
 
 
 ## Caracteristicas
+
 Las siguientes caracteristicas definen al jugador y se ven alteradas por eventos que ocurren durante la partida:
 
 #### Patrimonio
@@ -235,7 +238,8 @@ El prestigio es la ponderación de varios factores:
 - La media del prestigio de cada cuadro que posee el jugador (50%)
 - El prestigio que aportan las galerías del jugador (20%)
 - 1% por cada autor promocionado (Máximo 10%)
-- Efectividad en subastas (Si los cuadros que sacas a subasta se venden o no) (10%)
+- Efectividad en subastas (Si los cuadros que sacas a subasta se venden o no) (5%)
+- Popularidad en exposiciones (Si los cuadros que expones se venden o no) (5%)
 - Donaciones de dinero realizadas en subastas (5%)
 - Donaciones de obras al museo nacional (5%)
 
@@ -264,6 +268,7 @@ Cada empleado tendra un nivel en cada habilidad, que influirá en mayor o menor 
 | Barrio residencial | -40%                                    |
 | Arrabales | -60%                                        |
 
+En ocasiones, con el devenir de los años y los planes para la reconversión del las ciudades, el tipo de ubicación puede llegar a cambiar, afectando
 
 **Coste de la entrada**
 
@@ -328,18 +333,25 @@ Cada opcion tiene una efectividad, y un precio anual.
     - 2 limpiadores por cada 50 metros
 - Personal taquilla. Necesarios 2 taquilleros para abrir la galería
 - Cuidadores.
-  - Se oocupan de mantener vigilados los cuadros durante las visitas.
-  -  Necesario 1 cuidador por cada 10 obras
+  - Se ocupan de mantener vigilados los cuadros durante las visitas.
+  - Necesario 1 cuidador por cada 10 obras
 - Guías. Añade prestigio a la galería
-- Prevención de riesgos (Solo disponible a partir e 1950)
+- Prevención de riesgos (Solo disponible a partir de 1950)
   - Impide que las inundaciones y los incendios afecten a las galerías
 
 **Prestigio**
 
 El prestigio se calcula:
 
+- Ubicación (10%)
+- Instalaciones
+  - 
+  - Cuartos de baños
 - Servicios (10%)
-  - Si la galería cuenta con personal suficiente, limpieza
+  - Limpieza
+  - Taquilla
+  - Cuidadores
+  - Guías
 
 ### Almacén
 
@@ -349,6 +361,17 @@ Dependiendo de la calidad del sitio, las obras necesitaran cierta restauración.
 
 Puede albergar hasta 4 obras, y se pueden hacer dos ampliaciones de +2 obras cada una.
 
+### Alquilar una nueva galería
+
+Si cuentas con patrimonio suficiente, puedes abrir una nueva galería.
+
+### Dejar una de tus galerías
+
+Una vez que, tanto el almacén como la galería no contengan cuadros, puedes abandonar la galería, para ahorrar los costes de alquiler. Nunca puedes dejar tu última galería
+
+### Finanzas
+
+Está disponible un informe por año, con los ingresos y gastos que genera cada galería.
 
 ## TII / Tecnologías, innovaciones e inversiones
 
@@ -397,6 +420,9 @@ Puedes elegir entre 1 y 3 obras, y donarlas para siempre al museo de arte nacion
 
 A medida que pasa el tiempo, la acción queda en el olvido (Ingratos...) Cada año transucurrido desde la donación, desciende el prestigio obtenido (10% por cada año). al de 10 años, nadie se acuerdará de la donación realizada.
 
+**Visita al mercado negro**
+
+Puedes intentar comprar obras robadas que se encuentren en el mercado negro. 
 
 # EVENTOS
 
@@ -421,3 +447,7 @@ Puede ocurrir que, al inicio del año, ese año resulte ser una año de crisis. 
 Puede ocurrir un incendio o inundación en una galería, pero es muy poco probable. Si esto ocurre, la galería es destruida. Si la galería cuenta con un seguro, el jugador será compensado.
 
  Si la galería cuenta con un departamento de prevención de riesgos, el desastre no afectará a la galería.
+
+ ### Robos
+
+¡Los ladrones codician las obras que albergan las galerías! Si la galería cuenta con buena seguridad, los ladrones pueden ser detenidos. Si son muy habilidosos, o la galería no cuenta con medidas de seguridad adecuadas, se pueden perder cuadros de la propia galería.
