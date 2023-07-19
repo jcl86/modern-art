@@ -451,3 +451,9 @@ Puede ocurrir un incendio o inundación en una galería, pero es muy poco probab
  ### Robos
 
 ¡Los ladrones codician las obras que albergan las galerías! Si la galería cuenta con buena seguridad, los ladrones pueden ser detenidos. Si son muy habilidosos, o la galería no cuenta con medidas de seguridad adecuadas, se pueden perder cuadros de la propia galería.
+
+### Escándalo
+
+Un escándalo afecta a uno de los 5 autores principales. Puede ser un divorcio, una pelea, etc
+
+Hace que suba la popularidad del autor
